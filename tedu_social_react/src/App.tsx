@@ -14,11 +14,11 @@ function App() {
     <div className='App' id='wrapper'>
       <Router>
         <Switch>
-          <AccountRoute>
-            <Admin />
-          </AccountRoute>
-          <PrivateRoute>
+          <AccountRoute path='/login'>
             <Login />
+          </AccountRoute>
+          <PrivateRoute path='/'>
+            <Admin />
           </PrivateRoute>
         </Switch>
       </Router>

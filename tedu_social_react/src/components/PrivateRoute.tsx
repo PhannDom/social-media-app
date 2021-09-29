@@ -1,9 +1,9 @@
 import { Route, RouteProps } from "react-router-dom";
 
-import { Login } from "../pages/Account/Login";
-import React from "react";
 import { AccountState } from "../store/account/types";
 import { AppState } from "../store";
+import { Login } from "../pages/Account/Login";
+import React from "react";
 import { useSelector } from "react-redux";
 
 export const PrivateRoute = ({
@@ -11,6 +11,7 @@ export const PrivateRoute = ({
   ...rest
 }: RouteProps): JSX.Element => {
   const account: AccountState = useSelector((state: AppState) => state.account);
+
   return (
     <Route
       {...rest}
