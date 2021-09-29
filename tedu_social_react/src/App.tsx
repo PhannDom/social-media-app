@@ -7,12 +7,16 @@ import { Admin } from './pages/Admin/Admin';
 import { Login } from './pages/Account';
 import { PrivateRoute } from './components';
 import React from 'react';
+import { AccountRoute } from './components/AccountRoute';
 
 function App() {
   return (
     <div className='App' id='wrapper'>
       <Router>
         <Switch>
+          <AccountRoute>
+            <Admin />
+          </AccountRoute>
           <PrivateRoute>
             <Login />
           </PrivateRoute>
