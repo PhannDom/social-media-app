@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import { Route, Switch } from "react-router";
 
+import { AddUser } from '../Admin/Users/AddUser';
 import Home from "./Home/Home";
 import { LeftMenu } from "./LeftMenu/LeftMenu";
 import { TopBar } from "./TopBar/TopBar";
-import Users from "./Users/Users";
+import { Users } from "./Users/Users";
 import { getCurrentLoginUser } from "../../store/account/actions";
 import { useDispatch } from "react-redux";
 
@@ -13,6 +14,7 @@ export const Admin = () => {
   useEffect(() => {
     dispatch(getCurrentLoginUser());
   }, [dispatch]);
+
   return (
     <Fragment>
       <LeftMenu />
@@ -26,6 +28,9 @@ export const Admin = () => {
             <Switch>
               <Route path="/users">
                 <Users />
+              </Route>
+              <Route path='/user-add'>
+                <AddUser />
               </Route>
               <Route path="/">
                 <Home />

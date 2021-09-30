@@ -3,7 +3,6 @@ import { login, logout } from '../../store/account/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppState } from '../../store';
-import { useLocation } from 'react-router';
 
 export const Login = () => {
   const [inputs, setInputs] = useState({
@@ -17,7 +16,6 @@ export const Login = () => {
   const { email, password } = inputs;
 
   const dispatch = useDispatch();
-  const location = useLocation();
 
   useEffect(() => {
     dispatch(logout());
@@ -32,8 +30,7 @@ export const Login = () => {
     e.preventDefault();
     setSubmitted(true);
     if (email && password) {
-      const { from } = location.state || { from: { pathname: '/' } };
-      dispatch(login(email, password, from));
+      dispatch(login(email, password));
     }
   };
 

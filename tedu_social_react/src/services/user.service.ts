@@ -1,6 +1,6 @@
 import { IPagination, api } from '../helpers';
 
-import { IUser } from '../store/users/types';
+import { IAddUserRequest, IUser } from '../store/users/types';
 
 const login = async (email: string, password: string) => {
   const body = { email, password }
@@ -33,9 +33,17 @@ const getUsersPaging = async (
   return res;
 };
 
+const addUser = async (user: IAddUserRequest): Promise<any> => {
+  const res = await api.post(`/v1/users`, user).then((response) => {
+    return response.data;
+  });
+  return res;
+};
+
 export const userService = {
   login,
   logout,
   getCurrentLoginUser,
-  getUsersPaging
+  getUsersPaging,
+  addUser,
 };
