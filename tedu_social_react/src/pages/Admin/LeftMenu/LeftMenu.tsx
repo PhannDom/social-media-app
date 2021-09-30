@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const LeftMenu = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -12,17 +13,17 @@ export const LeftMenu = () => {
       id='accordionSidebar'
     >
       {/* Sidebar - Brand */}
-      <a
+      <Link
         className='sidebar-brand d-flex align-items-center justify-content-center'
-        href='index.html'
+        to='/'
       >
         <div className='sidebar-brand-icon rotate-n-15'>
           <i className='fas fa-laugh-wink' />
         </div>
         <div className='sidebar-brand-text mx-3'>
-          SB Admin <sup>2</sup>
+         Admin Social
         </div>
-      </a>
+      </Link>
       {/* Divider */}
       <hr className='sidebar-divider my-0' />
       {/* Nav Item - Dashboard */}
@@ -40,7 +41,7 @@ export const LeftMenu = () => {
       <li className='nav-item'>
         <a
           className={'nav-link' + (isComponentShow ? '' : ' collapsed')}
-          href='#'
+          href='/#'
           data-toggle='collapse'
           data-target='#collapseTwo'
           aria-expanded={isComponentShow ? 'true' : 'false'}
@@ -48,7 +49,7 @@ export const LeftMenu = () => {
           onClick={() => setIsComponentShow(!isComponentShow)}
         >
           <i className='fas fa-fw fa-cog' />
-          <span>Components</span>
+          <span>Hệ thống</span>
         </a>
         <div
           id='collapseTwo'
@@ -58,9 +59,9 @@ export const LeftMenu = () => {
         >
           <div className='bg-white py-2 collapse-inner rounded'>
             <h6 className='collapse-header'>Custom Components:</h6>
-            <a className='collapse-item' href='buttons.html'>
-              Buttons
-            </a>
+            <Link className='collapse-item' to='/users'>
+              Người dùng
+            </Link>
             <a className='collapse-item' href='cards.html'>
               Cards
             </a>
@@ -71,7 +72,7 @@ export const LeftMenu = () => {
       <li className='nav-item'>
         <a
           className='nav-link collapsed'
-          href='#'
+          href='/#'
           data-toggle='collapse'
           data-target='#collapseUtilities'
           aria-expanded='true'
@@ -111,7 +112,7 @@ export const LeftMenu = () => {
       <li className='nav-item'>
         <a
           className='nav-link collapsed'
-          href='#'
+          href='/#'
           data-toggle='collapse'
           data-target='#collapsePages'
           aria-expanded='true'

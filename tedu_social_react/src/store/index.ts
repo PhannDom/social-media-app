@@ -2,9 +2,10 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 
 import { accountReducer } from './account/reducers';
+import { setAuthToken } from '../helpers';
 import storage from 'redux-persist/lib/storage';
 import thunkMiddleware from 'redux-thunk';
-import { setAuthToken } from '../helpers';
+import { usersReducer } from './users/reducers';
 
 const persistConfig = {
   key: 'root',
@@ -14,6 +15,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   account: accountReducer,
+  users: usersReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
