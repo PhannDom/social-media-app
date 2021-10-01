@@ -1,8 +1,10 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { login, logout } from '../../store/account/actions';
+import { login } from '../../store/account/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppState } from '../../store';
+import { useHistory } from 'react-router';
+import { UrlConstants } from '../../constants';
 
 export const Login = () => {
   const [inputs, setInputs] = useState({
@@ -11,15 +13,19 @@ export const Login = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  const history = useHistory();
   const loading = useSelector<AppState>((state) => state.account.loading);
+  const token = useSelector<AppState>((state) => state.account.token);
 
   const { email, password } = inputs;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(logout());
-  }, [dispatch]);
+    if(token) {
+      history.push(UrlConstants.HOME)
+    }
+  }, [dispatch, token]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

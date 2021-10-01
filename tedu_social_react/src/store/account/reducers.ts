@@ -31,6 +31,7 @@ const accountReducer = (
       return {
         ...state,
         loading: false,
+        error: null,
         token: action.payload.token,
       };
     }
@@ -81,6 +82,8 @@ const accountReducer = (
       return {
         ...state,
         loading: false,
+        token: null,
+        refreshToken: null,
         error: action.payload.error,
       };
     }
